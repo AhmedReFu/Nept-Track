@@ -78,6 +78,122 @@
     hero.addEventListener('mouseleave', function () { tilt.style.transform = ''; });
   }
 
+  // Hero promo: the poster shows at once; the 16 MB video starts loading only after the
+  // page itself has finished, so it never slows the first paint.
+  //
+  // It plays with sound. Browsers refuse sound before the visitor has touched the page,
+  // so when that happens it plays muted and the sound comes on at the first tap, click or
+  // key press anywhere. The button lets people turn it off.
+  var promo = document.getElementById('promo');
+  var soundBtn = document.getElementById('soundBtn');
+  var userMuted = false;
+  if (promo) {
+    var showSound = function () {
+      if (!soundBtn) return;
+      soundBtn.hidden = false;
+      soundBtn.textContent = promo.muted ? '🔇' : '🔊';
+      soundBtn.setAttribute('aria-label', promo.muted ? 'Turn sound on' : 'Turn sound off');
+    };
+    var playWithSound = function () {
+      promo.muted = false;
+      var p = promo.play();
+      if (p && p.then) {
+        p.then(showSound).catch(function () {
+          // Sound refused: play muted now, unmute on the first interaction.
+          promo.muted = true;
+          var q = promo.play();
+          if (q && q.catch) q.catch(function () {});
+          showSound();
+        });
+      } else {
+        showSound();
+      }
+    };
+    var startPromo = function () {
+      promo.src = promo.getAttribute('data-src');
+      promo.preload = 'auto';
+      promo.removeAttribute('muted');
+      playWithSound();
+    };
+    if (document.readyState === 'complete') startPromo();
+    else window.addEventListener('load', startPromo);
+
+    var unmuteOnFirstTouch = function (e) {
+      if (soundBtn && e && soundBtn.contains(e.target)) return; // the button handles itself
+      if (userMuted || !promo.src || !promo.muted) return;
+      promo.muted = false;
+      var p = promo.play();
+      if (p && p.catch) p.catch(function () {});
+      showSound();
+      ['pointerdown', 'keydown', 'touchstart'].forEach(function (t) {
+        window.removeEventListener(t, unmuteOnFirstTouch, true);
+      });
+    };
+    ['pointerdown', 'keydown', 'touchstart'].forEach(function (t) {
+      window.addEventListener(t, unmuteOnFirstTouch, true);
+    });
+
+    if (soundBtn) {
+      soundBtn.addEventListener('click', function () {
+        promo.muted = !promo.muted;
+        userMuted = promo.muted;
+        if (!promo.muted) {
+          var p = promo.play();
+          if (p && p.catch) p.catch(function () {});
+        }
+        showSound();
+      });
+    }
+
+    // Pause while scrolled away, so the sound does not play over the rest of the page.
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!promo.src) return;
+          if (entry.isIntersecting) {
+            var p = promo.play();
+            if (p && p.catch) p.catch(function () {});
+          } else {
+            promo.pause();
+          }
+        });
+      }, { threshold: 0.25 }).observe(promo);
+    }
+  }
+
+  // Scroll tour: the step nearest the middle of the screen picks the phone's screen.
+  var tourSteps = Array.prototype.slice.call(document.querySelectorAll('.tour-step'));
+  var tourShots = Array.prototype.slice.call(document.querySelectorAll('.tour-shot'));
+  var tourDots = Array.prototype.slice.call(document.querySelectorAll('.tour-dots span'));
+  if (tourSteps.length && tourShots.length) {
+    var activeStep = -1;
+    var setStep = function (i) {
+      if (i === activeStep) return;
+      activeStep = i;
+      tourSteps.forEach(function (el, k) { el.classList.toggle('active', k === i); });
+      tourShots.forEach(function (el, k) { el.classList.toggle('active', k === i); });
+      tourDots.forEach(function (el, k) { el.classList.toggle('active', k === i); });
+    };
+    // The step whose middle is closest to the middle of the screen, read once per frame.
+    var ticking = false;
+    var pickStep = function () {
+      ticking = false;
+      var mid = window.innerHeight / 2;
+      var best = 0, bestDist = Infinity;
+      tourSteps.forEach(function (el, k) {
+        var r = el.getBoundingClientRect();
+        var d = Math.abs(r.top + r.height / 2 - mid);
+        if (d < bestDist) { bestDist = d; best = k; }
+      });
+      setStep(best);
+    };
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(pickStep); }
+    }, { passive: true });
+    window.addEventListener('resize', pickStep);
+    pickStep();
+  }
+
   // Gallery arrows
   var gallery = document.getElementById('gallery');
   if (gallery) {

@@ -4,14 +4,14 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nept Track: Habits, Money &amp; Notes</title>
-<meta name="description" content="Tasks, habits, money and notes in one offline app. No sign-up. No cloud. Your data stays on your phone." />
+<meta name="description" content="Tasks, habits, alarms, money and notes in one offline app. No sign-up. No cloud. Your data stays on your phone." />
 <meta name="theme-color" content="#FFFFFF" />
 <meta property="og:title" content="Nept Track: Habits &amp; Budget" />
-<meta property="og:description" content="Tasks, habits, money and notes in one offline app. No sign-up. No cloud." />
+<meta property="og:description" content="Tasks, habits, alarms, money and notes in one offline app. No sign-up. No cloud." />
 <meta property="og:image" content="images/feature.png" />
 <meta property="og:type" content="website" />
 <link rel="icon" href="images/favicon.png" />
-<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/style.css?v=20261010c" />
 </head>
 <body>
 
@@ -36,7 +36,7 @@
     <div class="hero-copy reveal">
       <span class="pill">Offline · No sign-up · Free</span>
       <h1>Your whole day, in one <span class="grad">calm</span> app.</h1>
-      <p class="lead">Nept Track keeps your tasks, habits, money and notes together. Nothing leaves your phone. No account, no cloud, no clutter.</p>
+      <p class="lead">Nept Track keeps your tasks, habits, alarms, money and notes together. Nothing leaves your phone. No account, no cloud, no clutter.</p>
       <div class="cta-row">
         <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.AhmedReFu.NeptTrack" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M3.6 1.8c-.3.3-.5.8-.5 1.4v17.6c0 .6.2 1.1.5 1.4l.1.1 9.9-9.9v-.2L3.7 1.7l-.1.1Zm13.3 13.9-3.3-3.3v-.2l3.3-3.3.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2.2h-.1Zm-.1.1L13.4 12 3.6 21.8c.4.4 1 .4 1.6.1l11.6-6.1M16.8 8.2 5.2 1.6c-.7-.4-1.2-.3-1.6.1l9.8 9.8 3.4-3.3Z"/></svg>
@@ -45,17 +45,96 @@
         <a class="btn btn-ghost" href="#features">See what it does</a>
       </div>
       <ul class="hero-stats">
-        <li><strong data-count="5">0</strong><span>tools in one</span></li>
+        <li><strong data-count="6">0</strong><span>tools in one</span></li>
         <li><strong data-count="6">0</strong><span>languages</span></li>
         <li><strong data-count="0" data-suffix="">0</strong><span>accounts needed</span></li>
       </ul>
     </div>
     <div class="hero-phone reveal">
-      <div class="phone tilt">
-        <img src="images/screens/01-tasks-today.png" alt="Nept Track Tasks screen showing today's progress and habits" />
+      <div class="phone tilt hero-video">
+        <!-- The poster paints at once; the video itself loads after the page (js/main.js). -->
+        <video id="promo" loop playsinline preload="none"
+          poster="images/screens/01-tasks-today.png"
+          data-src="media/nept-track-promo.mp4"
+          aria-label="Nept Track promo video"></video>
+        <button class="sound-btn" id="soundBtn" type="button" aria-label="Turn sound on" hidden>🔇</button>
       </div>
       <div class="float-card fc-1"><span class="dot dot-green"></span>Morning walk done</div>
       <div class="float-card fc-2"><span class="dot dot-amber"></span>12 day streak 🔥</div>
+    </div>
+  </section>
+
+  <!-- Tour: the phone stays put while its screen follows the scroll -->
+  <section class="section tour" id="screens">
+    <div class="section-head reveal">
+      <span class="eyebrow">Take a look inside</span>
+      <h2>Scroll through your day</h2>
+      <p>Every screen, the way it looks on your phone.</p>
+    </div>
+    <div class="tour-grid">
+      <ol class="tour-steps">
+        <li class="tour-step active" data-step="0">
+          <span class="tour-tag">01 · Today</span>
+          <h3>Your whole day, at a glance</h3>
+          <p>Habits and to-dos side by side, with your next alarm and today's spending right on top.</p>
+          <img class="tour-inline" src="images/screens/01-tasks-today.png" alt="Today screen" loading="lazy" width="1080" height="2340" />
+        </li>
+        <li class="tour-step" data-step="1">
+          <span class="tour-tag">02 · Alarms</span>
+          <h3>A real alarm clock</h3>
+          <p>Rings on time with the app closed and the phone locked, then fills the screen. Swipe to dismiss.</p>
+          <img class="tour-inline" src="images/screens/09-alarms.png" alt="Alarms screen" loading="lazy" width="1080" height="2340" />
+        </li>
+        <li class="tour-step" data-step="2">
+          <span class="tour-tag">03 · Set an alarm</span>
+          <h3>Set it like your phone's clock</h3>
+          <p>Scroll or type the time, pick repeat days, any tone from your phone, vibration and snooze.</p>
+          <img class="tour-inline" src="images/screens/10-alarm-editor.png" alt="Set an alarm screen" loading="lazy" width="1080" height="2340" />
+        </li>
+        <li class="tour-step" data-step="3">
+          <span class="tour-tag">04 · Insights</span>
+          <h3>See your streaks grow</h3>
+          <p>A consistency score, done vs missed, and streaks that rest days never break.</p>
+          <img class="tour-inline" src="images/screens/02-task-insights.png" alt="Insights screen" loading="lazy" width="1080" height="2340" />
+        </li>
+        <li class="tour-step" data-step="4">
+          <span class="tour-tag">05 · Money</span>
+          <h3>Know where your money goes</h3>
+          <p>Income, spending and net for the month, grouped by day and split by category.</p>
+          <img class="tour-inline" src="images/screens/03-money-overview.png" alt="Money screen" loading="lazy" width="1080" height="2340" />
+        </li>
+        <li class="tour-step" data-step="5">
+          <span class="tour-tag">06 · Inbox</span>
+          <h3>Capture first. Decide later.</h3>
+          <p>Write anything down in one tap. Turn it into a task, an expense or a note when you have a minute.</p>
+          <img class="tour-inline" src="images/screens/05-pending-inbox.png" alt="Inbox screen" loading="lazy" width="1080" height="2340" />
+        </li>
+        <li class="tour-step" data-step="6">
+          <span class="tour-tag">07 · Notes</span>
+          <h3>Notes that stay tidy</h3>
+          <p>Colours, pins, tags and checklists, with search across everything you wrote.</p>
+          <img class="tour-inline" src="images/screens/06-notes.png" alt="Notes screen" loading="lazy" width="1080" height="2340" />
+        </li>
+        <li class="tour-step" data-step="7">
+          <span class="tour-tag">08 · Dark mode</span>
+          <h3>Easy on the eyes at night</h3>
+          <p>A warm dark theme that follows your phone, or pick light or dark yourself.</p>
+          <img class="tour-inline" src="images/screens/07-light-mode.png" alt="Dark mode screen" loading="lazy" width="1080" height="2340" />
+        </li>
+      </ol>
+      <div class="tour-stage" aria-hidden="true">
+        <div class="phone tour-phone">
+          <img class="tour-shot active" src="images/screens/01-tasks-today.png" alt="" loading="eager" width="1080" height="2340" />
+          <img class="tour-shot" src="images/screens/09-alarms.png" alt="" loading="eager" width="1080" height="2340" />
+          <img class="tour-shot" src="images/screens/10-alarm-editor.png" alt="" loading="lazy" width="1080" height="2340" />
+          <img class="tour-shot" src="images/screens/02-task-insights.png" alt="" loading="lazy" width="1080" height="2340" />
+          <img class="tour-shot" src="images/screens/03-money-overview.png" alt="" loading="lazy" width="1080" height="2340" />
+          <img class="tour-shot" src="images/screens/05-pending-inbox.png" alt="" loading="lazy" width="1080" height="2340" />
+          <img class="tour-shot" src="images/screens/06-notes.png" alt="" loading="lazy" width="1080" height="2340" />
+          <img class="tour-shot" src="images/screens/07-light-mode.png" alt="" loading="lazy" width="1080" height="2340" />
+        </div>
+        <div class="tour-dots"><span class="active"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
     </div>
   </section>
 
@@ -63,7 +142,7 @@
   <section class="section" id="features">
     <div class="section-head reveal">
       <span class="eyebrow">Features</span>
-      <h2>Four tools. One quiet home.</h2>
+      <h2>Everything for your day. One quiet home.</h2>
       <p>Everything a normal day needs, without switching between five apps.</p>
     </div>
 
@@ -75,7 +154,17 @@
           <li>Daily habits and one-off to-dos, side by side</li>
           <li>Streaks, best streaks and a 12-week heatmap</li>
           <li>Rest days never break a streak</li>
-          <li>Reminders with your own sound</li>
+          <li>Reminders with any tone from your phone</li>
+        </ul>
+      </article>
+      <article class="feature reveal" style="--c:#FF7A1A">
+        <div class="f-icon">⏰</div>
+        <h3>Alarms</h3>
+        <ul>
+          <li>A real alarm clock: rings with the app closed</li>
+          <li>Full-screen over the lock screen, swipe to dismiss</li>
+          <li>Repeat days, snooze, vibration, any phone tone</li>
+          <li>Next alarm at a glance on your home screen</li>
         </ul>
       </article>
       <article class="feature reveal" style="--c:#12A85F">
@@ -137,29 +226,6 @@
     </div>
   </section>
 
-  <!-- Screens -->
-  <section class="section" id="screens">
-    <div class="section-head reveal">
-      <span class="eyebrow">Screens</span>
-      <h2>Take a look inside</h2>
-      <p>Warm amber design, light and dark themes. Tap any screen to see it bigger.</p>
-    </div>
-    <div class="gallery-wrap reveal">
-      <button class="g-arrow g-prev" aria-label="Previous screens">‹</button>
-      <div class="gallery" id="gallery">
-        <figure><img src="images/screens/01-tasks-today.png" alt="Tasks today" loading="lazy" /><figcaption>Today's tasks</figcaption></figure>
-        <figure><img src="images/screens/02-task-insights.png" alt="Task insights" loading="lazy" /><figcaption>Habit insights</figcaption></figure>
-        <figure><img src="images/screens/03-money-overview.png" alt="Money overview" loading="lazy" /><figcaption>Money overview</figcaption></figure>
-        <figure><img src="images/screens/04-money-insights.png" alt="Money insights" loading="lazy" /><figcaption>Spending insights</figcaption></figure>
-        <figure><img src="images/screens/05-pending-inbox.png" alt="Capture inbox" loading="lazy" /><figcaption>Capture inbox</figcaption></figure>
-        <figure><img src="images/screens/06-notes.png" alt="Notes" loading="lazy" /><figcaption>Notes</figcaption></figure>
-        <figure><img src="images/screens/07-light-mode.png" alt="Light mode" loading="lazy" /><figcaption>Light mode</figcaption></figure>
-        <figure><img src="images/screens/08-onboarding.png" alt="Onboarding" loading="lazy" /><figcaption>Quick start</figcaption></figure>
-      </div>
-      <button class="g-arrow g-next" aria-label="Next screens">›</button>
-    </div>
-  </section>
-
   <!-- Privacy -->
   <section class="section" id="privacy">
     <div class="privacy-card reveal">
@@ -181,7 +247,7 @@
   <!-- Extras -->
   <section class="section">
     <div class="extras reveal">
-      <div class="extra"><strong>🔔 Custom sounds</strong><span>A gentle chime for prayer, a bright one for the gym.</span></div>
+      <div class="extra"><strong>🔔 Your own tones</strong><span>Pick any sound on your phone for an alarm or a reminder.</span></div>
       <div class="extra"><strong>🌙 Quiet hours</strong><span>Nothing buzzes while you sleep.</span></div>
       <div class="extra"><strong>🤖 Nept AI</strong><span>Optional assistant that answers questions about your habits and spending.</span></div>
       <div class="extra"><strong>🌍 6 languages</strong><span>English, বাংলা, हिन्दी, العربية, Español, 한국어</span></div>
@@ -199,7 +265,7 @@
     <div class="faq reveal">
       <details>
         <summary>Is Nept Track free?</summary>
-        <p>Yes. The app is free to download and use. It shows a few ads from Google AdMob, never inside the editors and never while you are saving something.</p>
+        <p>Yes. The app is free to download and use. It shows a few ads from Google AdMob, never inside the editors and never while an alarm is ringing.</p>
       </details>
       <details>
         <summary>Do I need an account?</summary>
@@ -214,6 +280,10 @@
         <p>Yes. Export a backup file from Settings, copy it to the new phone, and import it there.</p>
       </details>
       <details>
+        <summary>Will my alarm ring if the app is closed?</summary>
+        <p>Yes. Alarms are booked with Android's own alarm clock, so they ring on time with the app closed, the screen off or the phone locked, and again after a restart.</p>
+      </details>
+      <details>
         <summary>Does it work without internet?</summary>
         <p>Everything you track works fully offline. Only ads and the optional AI assistant need a connection.</p>
       </details>
@@ -225,7 +295,7 @@
     <div class="cta-card reveal">
       <img src="images/icon.png" alt="" width="84" height="84" />
       <h2>Start your day with Nept Track</h2>
-      <p>One app for tasks, habits, money and notes. Free on Android.</p>
+      <p>One app for tasks, habits, alarms, money and notes. Free on Android.</p>
       <a class="store-btn dark" href="https://play.google.com/store/apps/details?id=com.AhmedReFu.NeptTrack" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M3.6 1.8c-.3.3-.5.8-.5 1.4v17.6c0 .6.2 1.1.5 1.4l.1.1 9.9-9.9v-.2L3.7 1.7l-.1.1Zm13.3 13.9-3.3-3.3v-.2l3.3-3.3.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2.2h-.1Zm-.1.1L13.4 12 3.6 21.8c.4.4 1 .4 1.6.1l11.6-6.1M16.8 8.2 5.2 1.6c-.7-.4-1.2-.3-1.6.1l9.8 9.8 3.4-3.3Z"/></svg>
         <span><small>Get it on</small>Google Play</span>
@@ -240,21 +310,14 @@
     <nav>
       <a href="privacy-policy.html">Privacy Policy</a>
       <a href="app-ads.txt">app-ads.txt</a>
-      <a href="mailto:YOUR_SUPPORT_EMAIL">Contact</a>
+      <a href="mailto:demostationplay@gmail.com">Contact</a>
     </nav>
     <p>© <span id="year">2026</span> Nept Track. Made with care, offline first.</p>
   </div>
 </footer>
 
 <!-- Lightbox -->
-<div class="lightbox" id="lightbox" hidden>
-  <button class="lb-close" aria-label="Close">×</button>
-  <button class="lb-nav lb-prev" aria-label="Previous">‹</button>
-  <img id="lbImg" alt="" />
-  <button class="lb-nav lb-next" aria-label="Next">›</button>
-  <p class="lb-cap" id="lbCap"></p>
-</div>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=20261010c"></script>
 </body>
 </html>

@@ -150,7 +150,7 @@ main { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
 .eyebrow { display: inline-block; color: var(--accent); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 12px; }
 
 /* Features */
-.features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
 .feature {
   position: relative; padding: 26px 22px; border-radius: var(--radius);
   background: var(--surface); border: 1px solid color-mix(in srgb, var(--c) 30%, var(--line));
@@ -198,6 +198,8 @@ main { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
 .gallery::-webkit-scrollbar { display: none; }
 .gallery figure { flex: 0 0 240px; margin: 0; scroll-snap-align: start; cursor: zoom-in; }
 .gallery img {
+  /* One frame for every shot, so older 9:16 images line up with full-height ones. */
+  width: 100%; aspect-ratio: 1080 / 2340; object-fit: cover; object-position: top;
   border-radius: 24px; box-shadow: var(--shadow); border: 1px solid var(--line);
   transition: transform .3s cubic-bezier(.3,1.5,.5,1);
 }
@@ -357,4 +359,55 @@ main { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
+}
+
+/* ---------- Hero promo video ---------- */
+.hero-video { position: relative; aspect-ratio: 1080 / 1920; background: #FFF8EC; }
+.hero-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sound-btn {
+  position: absolute; right: 14px; bottom: 14px; width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.6); background: rgba(42, 29, 6, 0.55); color: #fff;
+  font-size: 20px; cursor: pointer; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.sound-btn:hover { background: rgba(42, 29, 6, 0.75); }
+
+/* ---------- Scroll tour ---------- */
+.tour-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.tour-steps { list-style: none; margin: 0; padding: 0; }
+.tour-step {
+  min-height: 72vh; display: flex; flex-direction: column; justify-content: center;
+  opacity: .35; transition: opacity .35s ease;
+}
+.tour-step.active { opacity: 1; }
+.tour-step h3 { font-size: clamp(26px, 3.2vw, 38px); margin: 10px 0 12px; }
+.tour-step p { color: var(--muted); font-size: 18px; max-width: 30ch; margin: 0; }
+.tour-tag { color: var(--primary); font-weight: 800; font-size: 14px; letter-spacing: .02em; }
+.tour-inline { display: none; }
+.tour-stage {
+  position: sticky; top: calc(50vh - min(330px, 40vh)); display: flex; flex-direction: column;
+  align-items: center; gap: 18px;
+}
+.tour-phone { position: relative; width: min(300px, 36vh); aspect-ratio: 1080 / 2340; }
+.tour-shot {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transform: scale(1.04); transition: opacity .45s ease, transform .6s cubic-bezier(.2, .8, .2, 1);
+}
+.tour-shot.active { opacity: 1; transform: none; }
+.tour-dots { display: flex; gap: 8px; }
+.tour-dots span { width: 8px; height: 8px; border-radius: 4px; background: var(--line); transition: width .3s ease, background .3s ease; }
+.tour-dots span.active { width: 24px; background: var(--primary); }
+
+@media (max-width: 860px) {
+  /* Phones: no sticky stage; each step carries its own screenshot. */
+  .tour-grid { grid-template-columns: 1fr; gap: 0; }
+  .tour-stage { display: none; }
+  .tour-step { min-height: 0; opacity: 1; padding: 28px 0; align-items: center; text-align: center; }
+  .tour-step p { margin: 0 auto; }
+  .tour-inline {
+    display: block; width: min(280px, 72vw); height: auto; margin-top: 22px;
+    border-radius: 28px; box-shadow: var(--shadow); border: 1px solid var(--line);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-shot, .tour-step { transition: none; }
 }
