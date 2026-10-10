@@ -411,11 +411,3 @@ main { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
 @media (prefers-reduced-motion: reduce) {
   .tour-shot, .tour-step { transition: none; }
 }
-
-/* Shown when the browser started the video muted: a clear invitation to tap for sound. */
-.sound-btn.ask {
-  width: auto; height: auto; padding: 10px 16px; border-radius: 999px; left: 50%; right: auto;
-  bottom: 18px; transform: translateX(-50%); font-size: 15px; font-weight: 800; white-space: nowrap;
-  background: rgba(42, 29, 6, 0.78); animation: ask-pulse 1.6s ease-in-out 3;
-}
-@keyframes ask-pulse { 50% { transform: translateX(-50%) scale(1.06); } }

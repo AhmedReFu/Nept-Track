@@ -82,19 +82,19 @@
   // page itself has finished, so it never slows the first paint.
   //
   // It plays with sound. Browsers refuse sound before the visitor has touched the page,
-  // so when that happens it plays muted and the sound comes on at the first tap, click or
-  // key press anywhere. The button lets people turn it off.
+  // so when that happens it plays silently, with no message, and the sound comes on at
+  // the first tap, click or key press anywhere.
   var promo = document.getElementById('promo');
   var soundBtn = document.getElementById('soundBtn');
   var userMuted = false;
   if (promo) {
     var showSound = function () {
       if (!soundBtn) return;
-      soundBtn.hidden = false;
-      // Muted only because the browser blocked sound: say so loudly, so people tap.
+      // No prompt while the browser holds the sound back; the first tap anywhere brings it
+      // in. The small button appears once sound has played, so people can mute it.
       var blocked = promo.muted && !userMuted;
-      soundBtn.classList.toggle('ask', blocked);
-      soundBtn.textContent = blocked ? '🔊 Tap for sound' : promo.muted ? '🔇' : '🔊';
+      soundBtn.hidden = blocked;
+      soundBtn.textContent = promo.muted ? '🔇' : '🔊';
       soundBtn.setAttribute('aria-label', promo.muted ? 'Turn sound on' : 'Turn sound off');
     };
     var playWithSound = function () {
