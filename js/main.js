@@ -91,7 +91,10 @@
     var showSound = function () {
       if (!soundBtn) return;
       soundBtn.hidden = false;
-      soundBtn.textContent = promo.muted ? '🔇' : '🔊';
+      // Muted only because the browser blocked sound: say so loudly, so people tap.
+      var blocked = promo.muted && !userMuted;
+      soundBtn.classList.toggle('ask', blocked);
+      soundBtn.textContent = blocked ? '🔊 Tap for sound' : promo.muted ? '🔇' : '🔊';
       soundBtn.setAttribute('aria-label', promo.muted ? 'Turn sound on' : 'Turn sound off');
     };
     var playWithSound = function () {
