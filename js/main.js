@@ -4,6 +4,25 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+
+  // Play Store links. Every link carries a referrer, so Play attributes the install to
+  // the site. On Android the link opens the Play Store app itself (an intent: URL),
+  // where an installed app shows Open; browsers without the store fall back to the web page.
+  var PKG = 'com.AhmedReFu.NeptTrack';
+  var webUrl = 'https://play.google.com/store/apps/details?id=' + PKG + '&referrer=utm_source%3Dnept-track.vercel.app%26utm_medium%3Dwebsite';
+  var android = /Android/i.test(navigator.userAgent);
+  var storeLinks = document.querySelectorAll('a[href*="play.google.com/store/apps/details"]');
+  for (var i = 0; i < storeLinks.length; i += 1) {
+    var link = storeLinks[i];
+    if (android) {
+      link.href = 'intent://details?id=' + PKG + '&referrer=utm_source%3Dnept-track.vercel.app%26utm_medium%3Dwebsite' +
+        '#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=' + encodeURIComponent(webUrl) + ';end';
+      link.removeAttribute('target');
+    } else {
+      link.href = webUrl;
+    }
+  }
+
   // Footer year
   var year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
