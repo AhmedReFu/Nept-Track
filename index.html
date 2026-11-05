@@ -8,6 +8,7 @@
   <title>Nept Track: Private Offline Habit Tracker & Budget Planner</title>
   <meta name="description" content="Manage your life privately with Nept Track. An all-in-one offline habit tracker, expense log, budget planner, to-do list, and sketchbook with zero accounts required." />
   <meta name="theme-color" content="#FF7A1A" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   
   <!-- Canonical Tag (Replace with your exact Vercel subdomain) -->
   <link rel="canonical" href="https://nept-track.vercel.app/" />
@@ -21,6 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nept-track.vercel.app/" />
   <meta property="og:site_name" content="Nept Track" />
+  <meta property="og:locale" content="en_US" />
   
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -60,6 +62,62 @@
     { "@context": "https://schema.org", "@type": "WebSite", "name": "Nept Track", "alternateName": "Nept Track App", "url": "https://nept-track.vercel.app/" },
     { "@context": "https://schema.org", "@type": "Organization", "name": "Nept Track", "url": "https://nept-track.vercel.app/", "logo": "https://nept-track.vercel.app/images/icon.png", "email": "demostationplay@gmail.com" }
   ]
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is Nept Track free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The app is free to download and use. It shows a few ads from Google AdMob, never inside the editors and never while an alarm is ringing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need an account?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Open the app and start. There is no sign-up and no login."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where is my data stored?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Only on your phone, in a local database. Uninstalling the app deletes it, so export a backup from Settings first if you want to keep it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I move my data to a new phone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Export a backup file from Settings, copy it to the new phone, and import it there."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will my alarm ring if the app is closed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Alarms are booked with Android's own alarm clock, so they ring on time with the app closed, the screen off or the phone locked, and again after a restart."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work without internet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Everything you track works fully offline. Only ads and the optional AI assistant need a connection."
+        }
+      }
+    ]
+  }
   </script>
 </head>
 <body>
@@ -198,7 +256,7 @@
     <div class="features">
       <article class="feature reveal" style="--c:#F59400">
         <div class="f-icon">✅</div>
-        <h3>Tasks &amp; Habits</h3>
+        <h3>Habit Tracker &amp; Tasks</h3>
         <ul>
           <li>Daily habits and one-off to-dos, side by side</li>
           <li>Streaks, best streaks and a 12-week heatmap</li>
@@ -208,7 +266,7 @@
       </article>
       <article class="feature reveal" style="--c:#FF7A1A">
         <div class="f-icon">⏰</div>
-        <h3>Alarms</h3>
+        <h3>Alarm Clock &amp; Reminders</h3>
         <ul>
           <li>A real alarm clock: rings with the app closed</li>
           <li>Full-screen over the lock screen, swipe to dismiss</li>
@@ -218,7 +276,7 @@
       </article>
       <article class="feature reveal" style="--c:#12A85F">
         <div class="f-icon">💰</div>
-        <h3>Money</h3>
+        <h3>Expense Tracker &amp; Budget</h3>
         <ul>
           <li>Log income and spending in seconds</li>
           <li>Spending by category, with a clear chart</li>
@@ -228,12 +286,22 @@
       </article>
       <article class="feature reveal" style="--c:#7C5CFF">
         <div class="f-icon">📝</div>
-        <h3>Notes</h3>
+        <h3>Notes &amp; Checklists</h3>
         <ul>
           <li>Headings, lists and checkboxes</li>
           <li>Colours, pins and tags</li>
           <li>Search across everything you wrote</li>
           <li>Auto save, always</li>
+        </ul>
+      </article>
+      <article class="feature reveal" style="--c:#2BB8C4">
+        <div class="f-icon">🎨</div>
+        <h3>Sketch &amp; Draw</h3>
+        <ul>
+          <li>Draw freehand with pens, shapes, text and photos</li>
+          <li>Templates: mind map, weekly planner, vision board</li>
+          <li>Move, resize, undo and redo anything</li>
+          <li>Save to your gallery or share as image or PDF</li>
         </ul>
       </article>
       <article class="feature reveal" style="--c:#FF4F7B">
