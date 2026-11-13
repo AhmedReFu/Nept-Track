@@ -36,6 +36,7 @@
     <h2>Your data stays on your phone</h2>
     <p>Tasks, habits, alarms, money records, notes and inbox captures are saved in a database on your device. They are not uploaded to any server, and nobody else can read them. The one exception is a cloud backup that you start yourself after signing in, described under "An account is optional" below.</p>
     <p>Uninstalling the app deletes that database. Export a backup from Settings first if you want to keep it.</p>
+    <p>If Android's own backup is switched on for your Google account, Android may include the app's data in that backup, so that it comes back on a new phone. That copy is made and kept by Google under your phone's settings (Settings &rsaquo; Google &rsaquo; Backup); we never receive it.</p>
   </section>
 
   <section>
@@ -97,6 +98,13 @@
   <section>
     <h2>Push messages</h2>
     <p>The app registers with Google Firebase Cloud Messaging so it can receive occasional announcements, such as a new feature. This gives your phone an anonymous device token; no message content you write is sent. You can block these in your phone's notification settings.</p>
+  </section>
+
+  <section>
+    <h2>Camera and microphone</h2>
+    <p><strong>Camera.</strong> The app opens the camera only when you choose to take a photo for a note. The photo is saved on your phone with that note. It is not uploaded, and it is not part of a cloud backup.</p>
+    <p><strong>Microphone.</strong> The app listens only while you use voice input, in search or in Ask Nept, and shows when it is listening. Your speech is turned into text by your phone's speech service (on Android, Google's), which may process the audio on Google's servers under <a href="https://policies.google.com/privacy">Google's privacy policy</a>. The app receives only the text and never records, keeps or sends audio itself.</p>
+    <p>Android asks for each permission the first time you use the feature. Both are optional: the rest of the app works without them, and you can take them back in your phone's settings.</p>
   </section>
 
   <section>
