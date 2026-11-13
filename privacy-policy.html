@@ -30,17 +30,29 @@
 <article class="doc">
   <a class="back-link" href="index.html">← Back to home</a>
   <h1>Nept Track Privacy Policy</h1>
-  <p class="date">Effective 2 November 2026</p>
+  <p class="date">Effective 14 November 2026</p>
 
   <section>
     <h2>Your data stays on your phone</h2>
-    <p>Tasks, habits, alarms, money records, notes and inbox captures are saved in a database on your device only. They are not uploaded to any server, and nobody else can read them.</p>
+    <p>Tasks, habits, alarms, money records, notes and inbox captures are saved in a database on your device. They are not uploaded to any server, and nobody else can read them. The one exception is a cloud backup that you start yourself after signing in, described under "An account is optional" below.</p>
     <p>Uninstalling the app deletes that database. Export a backup from Settings first if you want to keep it.</p>
   </section>
 
   <section>
-    <h2>There is no account</h2>
-    <p>Nept Track does not ask you to sign up, and does not collect your name, email address or phone number. No part of the app, including the third-party services named below, reads or uploads your phone number.</p>
+    <h2>An account is optional</h2>
+    <p>You can use every part of Nept Track without an account. The app never asks for your phone number, and no part of it, including the third-party services named below, reads or uploads your phone number.</p>
+    <p>If you choose to sign in (Settings → Premium → Sign in), you can use Google, an email address with a password, or a one-time code that we email you. With Google sign-in, Google tells us your email address, name and profile photo; we never see your Google password. A password you create is stored only as a one-way hash that we cannot read. We then store, on our server:</p>
+    <ul>
+      <li><strong>Your email address</strong>, to sign you in and to find your account again on a new phone.</li>
+      <li><strong>Profile details you choose to add</strong>: a name, a profile photo, your birthday, your country, an address (a city or area is enough), a hobby and what you do (for example student or job). All of them are optional and can be changed or removed at any time. We use them to show your profile and to understand who uses the app. We do not ask for weight, height or other health details.</li>
+      <li><strong>Your Nept ID</strong> (the random app ID described under Premium), so that a subscription bought on this phone follows your account, and so that one phone cannot claim an invite twice.</li>
+      <li><strong>Account activity</strong>: when you last opened the app while signed in, how many times, and the app version. We use this to understand how many signed-in people use the app and to give support.</li>
+      <li><strong>Cloud backups</strong> (Premium only, and only when you tap Back up now): a copy of your tasks and habits, money records, notes, captures, alarms, sketches and special dates, kept so you can restore them. Period tracker data is never included. We keep your five most recent backups.</li>
+      <li><strong>Invites</strong> (only if you use them): your invite code, which account invited which, your points, and on how many days an invited person used the app. The person who invited you sees your profile name, or part of your email address, in their list of invited friends.</li>
+    </ul>
+    <p><strong>Without an account</strong>, the app still asks our server, each time it opens, whether this install has Premium and whether it has been blocked for abuse. That request carries the Nept ID and the app version. We do not store it.</p>
+    <p>Accounts are kept with Supabase (Supabase, Inc.; database and sign-in) and photos and backups with Cloudflare R2 (Cloudflare, Inc.; file storage). They process this data for us and do not use it for their own purposes. We do not sell it or use it for advertising.</p>
+    <p><strong>Deleting your account.</strong> Steps are also on the <a href="delete-account.html">Delete your account</a> page. In the app, open Settings → Premium → Delete account. This removes your account, profile, photo and cloud backups from our server straight away and cannot be undone. The data on your phone is not touched. If you cannot open the app, email us from the address of the account and we will delete it within 30 days. A paid subscription is separate and must be cancelled in Google Play.</p>
   </section>
 
   <section>
@@ -60,15 +72,18 @@
     <ul>
       <li>Counts app opens, screen views and the same named events as above (with the same &ldquo;item&rdquo; rule), plus a few actions such as creating a task, converting a capture or sharing a report. These carry only fixed labels like &ldquo;habit&rdquo; or &ldquo;expense&rdquo;, never your text, amounts or category names.</li>
       <li>Uses an app-instance id, phone model, Android version, language and approximate country. Google processes this under <a href="https://firebase.google.com/support/privacy">Firebase&rsquo;s privacy terms</a>.</li>
+      <li><strong>Premium events.</strong> If you subscribe to Premium, RevenueCat tells Firebase Analytics that a purchase, free trial, renewal, cancellation, expiry or billing problem happened, with the plan and its price. To file this under the same anonymous install, the app gives RevenueCat the Firebase app-instance id. No card or bank details are involved, and nothing you write is included.</li>
+      <li><strong>Measuring our own ads.</strong> Our Firebase Analytics is linked to our Google Ads account. Google Ads receives anonymous counts of a few actions, such as a first task being created or a Premium purchase, so we can see whether our ads bring people who use the app. Using this data to personalise ads is switched off.</li>
     </ul>
     <h3>Turning it off</h3>
-    <p>Settings &rsaquo; Your data &rsaquo; Share anonymous usage data switches off both Clarity and Firebase Analytics at once. It is on when you first install the app. While it is off, nothing is recorded or sent.</p>
+    <p>Settings &rsaquo; Your data &rsaquo; Share anonymous usage data switches off both Clarity and Firebase Analytics at once. It is on when you first install the app. While it is off, nothing is recorded or sent, the app-instance id is not given to RevenueCat, and one stored earlier is removed.</p>
   </section>
 
   <section>
     <h2>AI assistant (optional)</h2>
-    <p>Nept AI answers questions about your own habits and spending using Google Gemini. It is off until you read what it shares and turn it on.</p>
-    <p>When you ask a question, the app sends Google a summary it computes on your phone: habit names and how often you did them, the titles of open to-dos, spending totals per category, budgets and inbox counts, together with your question. Your notes, your captures, transaction notes and individual transactions are never sent.</p>
+    <p>Ask Nept answers questions about your own habits and spending using Google Gemini. It is off until you read what it shares and turn it on. You do not need an account to use it.</p>
+    <p>When you ask a question, the app sends our server a summary it computes on your phone: habit names and how often you did them, the titles of open to-dos, spending totals per category, budgets and inbox counts, together with your question. Our server passes this to Google Gemini, which writes the answer, and sends the answer back. Your notes, your captures, transaction notes and individual transactions are never sent.</p>
+    <p>Our server does not keep your questions, the summary or the answers. To hold a daily limit on questions, it keeps only a count per day against your account or Nept ID, and, when you are not signed in, a scrambled form of your network address that cannot be turned back into the address.</p>
     <p>Conversations are not saved by the app. Google processes requests under its own terms (<a href="https://ai.google.dev/gemini-api/terms">Gemini API terms</a>). Turn the assistant off at any time in Settings &rsaquo; Preferences &rsaquo; Ask Nept.</p>
   </section>
 
@@ -118,8 +133,18 @@
   </section>
 
   <section>
+    <h2>Premium subscription (optional)</h2>
+    <p>Nept Track Premium is a paid subscription sold through Google Play. Google Play handles the payment; we never see your card or bank details. To check whether your subscription is active, the app uses RevenueCat (RevenueCat, Inc., USA), which receives a random app ID created on your phone (shown in Settings as your Nept ID) and the Google Play purchase record. It does not receive your name, email, phone number or anything you write in the app. While anonymous usage data is on, RevenueCat also receives the Firebase app-instance id, as described under Google Firebase Analytics above. See the <a href="https://www.revenuecat.com/privacy">RevenueCat privacy policy</a>. You can cancel any time in Google Play.</p>
+  </section>
+
+  <section>
+    <h2>Period tracker (optional)</h2>
+    <p>If you choose "Woman" in the app, it can track your period. The dates, symptoms, mood and notes you log stay only on your phone, and in a backup file only if you export one yourself. They are left out of cloud backups. They are never sent to us, to analytics, to advertisers or to the AI assistant. Predictions are estimates for planning, not medical advice or birth control.</p>
+  </section>
+
+  <section>
     <h2>Support</h2>
-    <p>Support is by email, or by live chat. The chat is a web page run by Crisp (Crisp IM SAS, France) that opens in your browser when you tap Live chat; the app itself contains no chat software and sends Crisp nothing on its own. Before it opens the first time, the app tells you this and asks you to continue. Messages and any contact details you choose to type in the chat are handled by Crisp under the <a href="https://crisp.chat/en/privacy/">Crisp privacy policy</a>. Nothing is sent until you choose to write to us.</p>
+    <p>Support is by email, or by live chat. The chat is a web page run by Crisp (Crisp IM SAS, France), shown inside the app when you tap Live chat; the app contains no chat software (SDK), cannot read your phone number or contacts for the chat, and sends Crisp nothing on its own. Before it opens the first time, the app tells you this and asks you to continue. So that your conversation is still there next time, the app creates a random chat ID when you first open the chat, keeps it on your phone, and gives it to Crisp with the chat page; the chat page may also keep its own data in the app's web storage on your phone. The chat ID says nothing about who you are, and erasing the app's data removes it. Messages and any contact details you choose to type in the chat are handled by Crisp under the <a href="https://crisp.chat/en/privacy/">Crisp privacy policy</a>. Nothing is sent until you open the chat.</p>
   </section>
 
   <section>
